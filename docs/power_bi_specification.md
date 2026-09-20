@@ -2,7 +2,6 @@
 
 **Document Version:** 1.0.0 (Production)  
 **Target Environment:** Microsoft Power BI Desktop / Power BI Service (Import Mode or DirectQuery on PostgreSQL)  
-**Author:** CoinDCX BI & Analytics Engineering  
 
 ---
 

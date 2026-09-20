@@ -1,7 +1,6 @@
 -- =============================================================================
 -- PulseScope: Relational Data Warehouse Schema & Advanced Financial Views
 -- Target Database: PostgreSQL 14+
--- Authors: CoinDCX BI & Analytics Engineering
 -- Description: Institutional-grade schema modeling for crypto trading, true FIFO
 --              lot accounting, mark-to-market unrealised exposure, and incident triage.
 -- =============================================================================

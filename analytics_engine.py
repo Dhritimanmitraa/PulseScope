@@ -3,7 +3,6 @@ PulseScope: Crypto Trading Performance, Risk & Anomaly Analytics Platform
 ==========================================================================
 Component: Python Ingestion, Simulation & Anomaly Engine (analytics_engine.py)
 Target DB: PostgreSQL 14+ / Power BI Star Schema
-Author: CoinDCX BI & Analytics Engineering
 
 This module provides institutional-grade synthetic data generation, real/synthetic
 market candle ingestion, multi-threshold stop-loss backtesting, and real-time
