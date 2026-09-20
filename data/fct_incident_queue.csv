@@ -1,0 +1,48 @@
+user_id,asset_id,priority_level,anomaly_category,metric_value,baseline_value,status,detected_at,description
+USR_RET_011,BTC,P0,STOP_LOSS_SLIPPAGE,4.15,2.0,OPEN,2026-08-22 18:19:00.000000,Critical execution slippage of 4.15% detected on trade TRD_800295 (Order ORD_500295). Breaches institutional SLA of 2.00%.
+USR_RET_002,BTC,P0,STOP_LOSS_SLIPPAGE,3.27,2.0,OPEN,2026-08-24 21:12:00.000000,Critical execution slippage of 3.27% detected on trade TRD_800053 (Order ORD_500053). Breaches institutional SLA of 2.00%.
+USR_RET_012,BTC,P0,STOP_LOSS_SLIPPAGE,5.44,2.0,OPEN,2026-08-27 00:04:00.000000,Critical execution slippage of 5.44% detected on trade TRD_800309 (Order ORD_500309). Breaches institutional SLA of 2.00%.
+USR_RET_009,BTC,P0,STOP_LOSS_SLIPPAGE,3.39,2.0,OPEN,2026-08-27 20:53:00.000000,Critical execution slippage of 3.39% detected on trade TRD_800239 (Order ORD_500239). Breaches institutional SLA of 2.00%.
+USR_RET_011,BTC,P0,STOP_LOSS_SLIPPAGE,3.58,2.0,OPEN,2026-08-28 23:49:00.000000,Critical execution slippage of 3.58% detected on trade TRD_800294 (Order ORD_500294). Breaches institutional SLA of 2.00%.
+USR_RET_012,BTC,P0,STOP_LOSS_SLIPPAGE,4.44,2.0,OPEN,2026-08-30 05:57:00.000000,Critical execution slippage of 4.44% detected on trade TRD_800314 (Order ORD_500314). Breaches institutional SLA of 2.00%.
+USR_RET_010,BTC,P0,STOP_LOSS_SLIPPAGE,3.66,2.0,OPEN,2026-08-30 23:45:00.000000,Critical execution slippage of 3.66% detected on trade TRD_800249 (Order ORD_500249). Breaches institutional SLA of 2.00%.
+USR_RET_009,BTC,P0,STOP_LOSS_SLIPPAGE,4.22,2.0,OPEN,2026-09-04 06:34:00.000000,Critical execution slippage of 4.22% detected on trade TRD_800227 (Order ORD_500227). Breaches institutional SLA of 2.00%.
+USR_RET_014,BTC,P0,STOP_LOSS_SLIPPAGE,5.2,2.0,OPEN,2026-09-05 17:43:00.000000,Critical execution slippage of 5.20% detected on trade TRD_800371 (Order ORD_500371). Breaches institutional SLA of 2.00%.
+USR_RET_013,BTC,P0,STOP_LOSS_SLIPPAGE,3.6,2.0,OPEN,2026-09-07 04:34:00.000000,Critical execution slippage of 3.60% detected on trade TRD_800339 (Order ORD_500339). Breaches institutional SLA of 2.00%.
+USR_RET_009,BTC,P0,STOP_LOSS_SLIPPAGE,4.19,2.0,OPEN,2026-09-08 01:46:00.000000,Critical execution slippage of 4.19% detected on trade TRD_800228 (Order ORD_500228). Breaches institutional SLA of 2.00%.
+USR_RET_014,BTC,P0,STOP_LOSS_SLIPPAGE,3.85,2.0,OPEN,2026-09-10 12:49:00.000000,Critical execution slippage of 3.85% detected on trade TRD_800374 (Order ORD_500374). Breaches institutional SLA of 2.00%.
+USR_RET_007,BTC,P0,STOP_LOSS_SLIPPAGE,4.6,2.0,OPEN,2026-09-10 19:47:00.000000,Critical execution slippage of 4.60% detected on trade TRD_800174 (Order ORD_500174). Breaches institutional SLA of 2.00%.
+USR_RET_009,BTC,P0,STOP_LOSS_SLIPPAGE,5.21,2.0,OPEN,2026-09-11 21:35:00.000000,Critical execution slippage of 5.21% detected on trade TRD_800241 (Order ORD_500241). Breaches institutional SLA of 2.00%.
+USR_RET_004,BTC,P0,STOP_LOSS_SLIPPAGE,4.42,2.0,OPEN,2026-09-12 00:10:00.000000,Critical execution slippage of 4.42% detected on trade TRD_800083 (Order ORD_500083). Breaches institutional SLA of 2.00%.
+USR_RET_001,BTC,P0,STOP_LOSS_SLIPPAGE,4.38,2.0,OPEN,2026-09-12 17:48:00.000000,Critical execution slippage of 4.38% detected on trade TRD_800001 (Order ORD_500001). Breaches institutional SLA of 2.00%.
+USR_RET_012,BTC,P0,STOP_LOSS_SLIPPAGE,4.56,2.0,OPEN,2026-09-12 18:06:00.000000,Critical execution slippage of 4.56% detected on trade TRD_800308 (Order ORD_500308). Breaches institutional SLA of 2.00%.
+USR_RET_008,BTC,P0,STOP_LOSS_SLIPPAGE,3.14,2.0,OPEN,2026-09-12 23:46:00.000000,Critical execution slippage of 3.14% detected on trade TRD_800196 (Order ORD_500196). Breaches institutional SLA of 2.00%.
+USR_RET_005,BTC,P0,STOP_LOSS_SLIPPAGE,4.88,2.0,OPEN,2026-09-14 22:05:00.000000,Critical execution slippage of 4.88% detected on trade TRD_800116 (Order ORD_500116). Breaches institutional SLA of 2.00%.
+USR_RET_013,BTC,P0,STOP_LOSS_SLIPPAGE,5.03,2.0,OPEN,2026-09-15 03:38:00.000000,Critical execution slippage of 5.03% detected on trade TRD_800350 (Order ORD_500350). Breaches institutional SLA of 2.00%.
+USR_RET_011,BTC,P0,STOP_LOSS_SLIPPAGE,5.05,2.0,OPEN,2026-09-17 03:17:00.000000,Critical execution slippage of 5.05% detected on trade TRD_800285 (Order ORD_500285). Breaches institutional SLA of 2.00%.
+USR_RET_015,BTC,P0,STOP_LOSS_SLIPPAGE,3.73,2.0,OPEN,2026-09-17 16:58:00.000000,Critical execution slippage of 3.73% detected on trade TRD_800407 (Order ORD_500407). Breaches institutional SLA of 2.00%.
+USR_RET_012,BTC,P0,STOP_LOSS_SLIPPAGE,3.84,2.0,OPEN,2026-09-18 07:02:00.000000,Critical execution slippage of 3.84% detected on trade TRD_800310 (Order ORD_500310). Breaches institutional SLA of 2.00%.
+USR_RET_012,BTC,P0,STOP_LOSS_SLIPPAGE,4.22,2.0,OPEN,2026-09-18 11:55:00.000000,Critical execution slippage of 4.22% detected on trade TRD_800307 (Order ORD_500307). Breaches institutional SLA of 2.00%.
+USR_HFT_005,BTC,P1,WASH_TRADE_DETECTED,3.43,30.0,OPEN,2026-08-22 05:53:20.430055,Potential circular wash trade: USR_HFT_005 executed opposing SELL/BUY of 0.0105 BTC within 3.43s (Threshold: <= 5.0s).
+USR_HFT_001,BTC,P1,WASH_TRADE_DETECTED,2.15,30.0,OPEN,2026-08-24 04:20:21.149073,Potential circular wash trade: USR_HFT_001 executed opposing BUY/SELL of 0.0029 BTC within 2.15s (Threshold: <= 5.0s).
+USR_HFT_001,BTC,P1,WASH_TRADE_DETECTED,2.76,30.0,OPEN,2026-08-25 11:22:51.762784,Potential circular wash trade: USR_HFT_001 executed opposing SELL/BUY of 0.0026 BTC within 2.76s (Threshold: <= 5.0s).
+USR_HFT_003,BTC,P1,WASH_TRADE_DETECTED,1.43,30.0,OPEN,2026-08-26 10:00:38.426178,Potential circular wash trade: USR_HFT_003 executed opposing BUY/SELL of 0.0028 BTC within 1.43s (Threshold: <= 5.0s).
+USR_HFT_005,BTC,P1,WASH_TRADE_DETECTED,1.11,30.0,OPEN,2026-08-31 09:53:18.110995,Potential circular wash trade: USR_HFT_005 executed opposing BUY/SELL of 0.0127 BTC within 1.11s (Threshold: <= 5.0s).
+USR_HFT_001,BTC,P1,WASH_TRADE_DETECTED,3.78,30.0,OPEN,2026-09-03 08:15:04.783805,Potential circular wash trade: USR_HFT_001 executed opposing BUY/SELL of 0.0097 BTC within 3.78s (Threshold: <= 5.0s).
+USR_HFT_004,BTC,P1,WASH_TRADE_DETECTED,3.44,30.0,OPEN,2026-09-04 00:54:47.442593,Potential circular wash trade: USR_HFT_004 executed opposing SELL/BUY of 0.0146 BTC within 3.44s (Threshold: <= 5.0s).
+USR_HFT_004,BTC,P1,WASH_TRADE_DETECTED,0.97,30.0,OPEN,2026-09-13 19:03:42.970139,Potential circular wash trade: USR_HFT_004 executed opposing BUY/SELL of 0.0106 BTC within 0.97s (Threshold: <= 5.0s).
+USR_HFT_004,BTC,P1,WASH_TRADE_DETECTED,1.47,30.0,OPEN,2026-09-13 21:46:55.473997,Potential circular wash trade: USR_HFT_004 executed opposing SELL/BUY of 0.0084 BTC within 1.47s (Threshold: <= 5.0s).
+USR_HFT_002,BTC,P1,WASH_TRADE_DETECTED,3.09,30.0,OPEN,2026-09-15 09:08:01.094421,Potential circular wash trade: USR_HFT_002 executed opposing SELL/BUY of 0.0047 BTC within 3.09s (Threshold: <= 5.0s).
+USR_HFT_002,BTC,P1,WASH_TRADE_DETECTED,2.44,30.0,OPEN,2026-09-15 21:14:10.444814,Potential circular wash trade: USR_HFT_002 executed opposing SELL/BUY of 0.0041 BTC within 2.44s (Threshold: <= 5.0s).
+USR_HFT_002,BTC,P1,WASH_TRADE_DETECTED,3.62,30.0,OPEN,2026-09-16 19:44:03.616558,Potential circular wash trade: USR_HFT_002 executed opposing BUY/SELL of 0.0140 BTC within 3.62s (Threshold: <= 5.0s).
+USR_HFT_003,BTC,P1,WASH_TRADE_DETECTED,1.45,30.0,OPEN,2026-09-16 21:33:09.449055,Potential circular wash trade: USR_HFT_003 executed opposing SELL/BUY of 0.0108 BTC within 1.45s (Threshold: <= 5.0s).
+USR_HFT_005,BTC,P1,WASH_TRADE_DETECTED,3.55,30.0,OPEN,2026-09-19 08:41:55.554836,Potential circular wash trade: USR_HFT_005 executed opposing SELL/BUY of 0.0028 BTC within 3.55s (Threshold: <= 5.0s).
+USR_HFT_003,BTC,P1,WASH_TRADE_DETECTED,1.95,30.0,OPEN,2026-09-19 20:24:37.953236,Potential circular wash trade: USR_HFT_003 executed opposing SELL/BUY of 0.0141 BTC within 1.95s (Threshold: <= 5.0s).
+PLATFORM_AGGREGATE,BTC,P2,VOLUME_SPIKE,3.96,3.0,OPEN,2026-08-22 18:00:00.000000,"Platform volume anomaly detected at 2026-08-22 18:00:00: 0.20 BTC (Baseline Mean: 0.04 BTC, Z-Score: 3.96 > 3.00)."
+PLATFORM_AGGREGATE,BTC,P2,VOLUME_SPIKE,3.33,3.0,OPEN,2026-08-27 11:00:00.000000,"Platform volume anomaly detected at 2026-08-27 11:00:00: 0.18 BTC (Baseline Mean: 0.06 BTC, Z-Score: 3.33 > 3.00)."
+PLATFORM_AGGREGATE,BTC,P2,VOLUME_SPIKE,3.84,3.0,OPEN,2026-08-30 05:00:00.000000,"Platform volume anomaly detected at 2026-08-30 05:00:00: 0.27 BTC (Baseline Mean: 0.06 BTC, Z-Score: 3.84 > 3.00)."
+PLATFORM_AGGREGATE,BTC,P2,VOLUME_SPIKE,3.5,3.0,OPEN,2026-09-04 06:00:00.000000,"Platform volume anomaly detected at 2026-09-04 06:00:00: 0.28 BTC (Baseline Mean: 0.07 BTC, Z-Score: 3.50 > 3.00)."
+PLATFORM_AGGREGATE,BTC,P2,VOLUME_SPIKE,3.03,3.0,OPEN,2026-09-09 08:00:00.000000,"Platform volume anomaly detected at 2026-09-09 08:00:00: 0.21 BTC (Baseline Mean: 0.07 BTC, Z-Score: 3.03 > 3.00)."
+PLATFORM_AGGREGATE,BTC,P2,VOLUME_SPIKE,3.07,3.0,OPEN,2026-09-10 16:00:00.000000,"Platform volume anomaly detected at 2026-09-10 16:00:00: 0.24 BTC (Baseline Mean: 0.08 BTC, Z-Score: 3.07 > 3.00)."
+PLATFORM_AGGREGATE,BTC,P2,VOLUME_SPIKE,3.16,3.0,OPEN,2026-09-15 13:00:00.000000,"Platform volume anomaly detected at 2026-09-15 13:00:00: 0.23 BTC (Baseline Mean: 0.06 BTC, Z-Score: 3.16 > 3.00)."
+PLATFORM_AGGREGATE,BTC,P2,VOLUME_SPIKE,3.68,3.0,OPEN,2026-09-17 12:00:00.000000,"Platform volume anomaly detected at 2026-09-17 12:00:00: 0.30 BTC (Baseline Mean: 0.07 BTC, Z-Score: 3.68 > 3.00)."

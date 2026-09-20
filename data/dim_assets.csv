@@ -1,0 +1,4 @@
+asset_id,symbol,base_currency,is_active
+BTC,BTC,INR,True
+ETH,ETH,INR,True
+SOL,SOL,INR,True
