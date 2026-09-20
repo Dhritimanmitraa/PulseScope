@@ -199,21 +199,3 @@ psql -U postgres -d pulsescope_db -f sql/schema.sql
 psql -U postgres -d pulsescope_db -f sql/seed_warehouse.sql
 ```
 
----
-
-## 7. How to Present This on Your Resume & Applications
-
-> • **Engineered an institutional-grade crypto trading analytics platform** (PostgreSQL, Python, Power BI) modeling 100k+ transactions across normalized entities (`dim_users`, `fct_orders`, `fct_trades`, `fct_market_candles`).
-> 
-> • **Designed a deterministic FIFO lot-matching engine in SQL** using cumulative window CTEs, isolating Gross, Realised, and Mark-to-Market Unrealised PnL net of exchange maker/taker fees.
-> 
-> • **Developed a multi-tier incident prioritisation engine (P0–P2)** in Python to triage execution slippage breaches (>3%), circular wash-trading patterns (<5s), and rolling volume anomalies ($Z > 3.0$).
-> 
-> • **Authored a stop-loss backtest diagnostic & executive stakeholder brief** demonstrating how a 5% stop policy cuts retail drawdown by 77.7% while expanding exchange fee generation by 62.1%.
-
----
-
-## 8. Interview Prep Deep-Dive
-
-For complete, rigorous interview defense covering SQL query execution plans, VertiPaq vs. Formula Engine optimizations, heavy-tailed volume distributions, and exchange economics, review:
-👉 [`docs/INTERVIEW_PULSESCOPE_QA.md`](docs/INTERVIEW_PULSESCOPE_QA.md)
