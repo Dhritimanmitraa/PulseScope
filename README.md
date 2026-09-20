@@ -1,5 +1,6 @@
 # PulseScope: Crypto Trading Performance, Risk & Anomaly Analytics Platform
 
+[![CI Pipeline](https://github.com/Dhritimanmitraa/PulseScope/actions/workflows/ci.yml/badge.svg)](https://github.com/Dhritimanmitraa/PulseScope/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![PostgreSQL 14+](https://img.shields.io/badge/PostgreSQL-14%2B-336791.svg)](https://www.postgresql.org/)
 [![Power BI](https://img.shields.io/badge/Power_BI-DAX_Semantic_Model-F2C811.svg)](https://powerbi.microsoft.com/)
@@ -51,7 +52,25 @@ An institutional-grade Business Intelligence & Data Analytics platform designed 
 
 ---
 
-## 2. Core Financial & SQL Logic: True FIFO Lot Matching
+## 2. Executive BI Dashboard Previews
+
+PulseScope provides a 3-page institutional Power BI dashboard modeled on a Constellation Star Schema:
+
+### Page 1: Executive & PnL KPI Cockpit
+*Tracks cumulative realized net PnL curves across Retail, Systematic, and HFT personas, fee revenue contribution, and notional asset concentration.*
+![Page 1: Executive & PnL KPI Cockpit](docs/images/dashboard_page1_pnl_cockpit.png)
+
+### Page 2: Stop-Loss Backtest Diagnostic & Risk Benchmark
+*Evaluates drawdown vs. win-rate frontiers across stop-loss policies, proving that an automated 5% stop preserves ₹14.3 Lakhs (+77.7%) in retail capital.*
+![Page 2: Stop-Loss Backtest Diagnostic](docs/images/dashboard_page2_stoploss_diagnostic.png)
+
+### Page 3: Incident Prioritisation & Market Integrity Command Queue
+*Real-time operational surveillance triage flagging P0 execution slippage breaches (>3%), P1 circular wash-trading (<5s), and P2 statistical volume spikes ($Z > 3.0$).*
+![Page 3: Incident Prioritisation Command Queue](docs/images/dashboard_page3_incident_queue.png)
+
+---
+
+## 3. Core Financial & SQL Logic: True FIFO Lot Matching
 
 Naive PnL calculations ($\sum(\text{Sell}) - \sum(\text{Buy})$) fail catastrophically when open inventory exists. PulseScope implements an industrial **First-In, First-Out (FIFO) cumulative interval overlapping join** inside PostgreSQL (`view_fifo_realised_pnl`), resolving sub-second timestamp collisions via secondary tie-breaking:
 
@@ -113,7 +132,7 @@ FROM MatchedIntervals;
 
 ---
 
-## 3. Operational Incident Triage Matrix
+## 4. Operational Incident Triage Matrix
 
 Surveillance alerts are tagged into strict operational SLAs matching institutional exchange practices:
 
@@ -125,7 +144,7 @@ Surveillance alerts are tagged into strict operational SLAs matching institution
 
 ---
 
-## 4. Key Empirical Findings (Stop-Loss Backtest)
+## 5. Key Empirical Findings (Stop-Loss Backtest)
 
 Analysis of 100,000+ transaction executions across the trader cohort demonstrates that unmanaged retail accounts suffer an average maximum drawdown of **-34.8%**, with **62%** of losing positions held past a -15% unrealised loss threshold.
 
@@ -140,10 +159,12 @@ Analysis of 100,000+ transaction executions across the trader cohort demonstrate
 
 ---
 
-## 5. Project Directory Structure
+## 6. Project Directory Structure
 
 ```plaintext
 PulseScope/
+├── .github/workflows/
+│   └── ci.yml                             # Automated testing & verification pipeline
 ├── data/
 │   ├── dim_assets.csv                     # Supported cryptocurrency instruments (BTC, ETH, SOL)
 │   ├── dim_users.csv                      # Cohort of 30 traders across 3 personas & KYC tiers
@@ -154,15 +175,22 @@ PulseScope/
 │   ├── diagnostic_stop_loss_lots.csv      # Lot-by-lot stop-loss simulation outputs
 │   └── diagnostic_stop_loss_summary.csv   # Executive benchmark matrix across SL thresholds
 ├── docs/
-│   ├── MEMO_StopLoss_Performance_Risk.md  # 1-Page Executive Stakeholder Brief
+│   ├── images/                            # High-resolution dashboard visual previews
+│   │   ├── dashboard_page1_pnl_cockpit.png
+│   │   ├── dashboard_page2_stoploss_diagnostic.png
+│   │   └── dashboard_page3_incident_queue.png
+│   ├── MEMO_StopLoss_Performance_Risk.md  # 1-Page Executive Stakeholder Brief (Markdown)
 │   ├── power_bi_specification.md          # Star Schema blueprint, DAX library & 3-page visual layouts
 │   ├── INTERVIEW_PULSESCOPE_QA.md         # 5 Rigorous technical interview questions & model answers
 │   └── PulseScope_Executive_Brief.pdf     # 1-Page Executive PDF deliverable
 ├── sql/
 │   ├── schema.sql                         # PostgreSQL DDL, indexes, and true FIFO / MTM SQL views
 │   └── seed_warehouse.sql                 # Bulk \copy script for populating the database
+├── tests/
+│   └── test_analytics.py                  # Pytest suite for FIFO invariants & P0/P1/P2 thresholds
 ├── analytics_engine.py                    # Multi-persona generator, backtester & risk engine
-├── create_executive_pdf.py                # Single-page PDF generator script
+├── generate_dashboard_previews.py         # Matplotlib/Seaborn dashboard visual generator
+├── create_executive_pdf.py                # Standalone script generating the 1-page PDF
 ├── requirements.txt                       # Project dependencies
 ├── PulseScope_Executive_Brief.pdf         # Root-level 1-page PDF deliverable
 └── README.md                              # Institutional system documentation
@@ -170,7 +198,7 @@ PulseScope/
 
 ---
 
-## 6. Quickstart: Run & Deploy Locally
+## 7. Quickstart: Run & Deploy Locally
 
 ### Step 1: Install Dependencies
 ```bash
@@ -187,7 +215,12 @@ python analytics_engine.py
 - Runs multi-threshold stop-loss backtests and P0–P2 risk anomaly triage.
 - Populates `./data/` with clean relational CSVs matching `schema.sql`.
 
-### Step 3: Seed PostgreSQL (Optional for Demo)
+### Step 3: Run Automated Test Suite
+```bash
+pytest tests/ -v
+```
+
+### Step 4: Seed PostgreSQL (Optional for Demo)
 ```bash
 # Create target database
 createdb -U postgres pulsescope_db
@@ -198,4 +231,3 @@ psql -U postgres -d pulsescope_db -f sql/schema.sql
 # Bulk load generated CSVs into PostgreSQL
 psql -U postgres -d pulsescope_db -f sql/seed_warehouse.sql
 ```
-
