@@ -183,10 +183,13 @@ PulseScope/
 │   ├── power_bi_specification.md          # Star Schema blueprint, DAX library & 3-page visual layouts
 │   ├── INTERVIEW_PULSESCOPE_QA.md         # 5 Rigorous technical interview questions & model answers
 │   └── PulseScope_Executive_Brief.pdf     # 1-Page Executive PDF deliverable
+├── dashboards/
+│   └── README.md                          # Power BI Star Schema, DAX metrics & layout guide
 ├── sql/
 │   ├── schema.sql                         # PostgreSQL DDL, indexes, and true FIFO / MTM SQL views
 │   └── seed_warehouse.sql                 # Bulk \copy script for populating the database
 ├── tests/
+│   ├── conftest.py                        # Shared test fixtures for candles, users, and lots
 │   └── test_analytics.py                  # Pytest suite for FIFO invariants & P0/P1/P2 thresholds
 ├── analytics_engine.py                    # Multi-persona generator, backtester & risk engine
 ├── generate_dashboard_previews.py         # Matplotlib/Seaborn dashboard visual generator

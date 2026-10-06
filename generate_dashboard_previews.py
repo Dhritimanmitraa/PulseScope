@@ -9,7 +9,7 @@ Usage
 -----
     python generate_dashboard_previews.py
 
-All render functions are idempotent — safe to re-run after pipeline regeneration.
+All render functions are idempotent - safe to re-run after pipeline regeneration.
 """
 
 from __future__ import annotations
@@ -36,14 +36,14 @@ TEXT_LIGHT: Final[str] = "#F8FAFC"   # Primary text
 TEXT_MUTED: Final[str] = "#94A3B8"   # Secondary / label text
 
 # Persona palette
-COLOR_RETAIL: Final[str] = "#EF4444"  # Crimson  — drawdown / P0
-COLOR_TREND: Final[str]  = "#38BDF8"  # Sky blue — systematic growth
-COLOR_HFT: Final[str]    = "#10B981"  # Emerald  — fee capture
+COLOR_RETAIL: Final[str] = "#EF4444"  # Crimson  - drawdown / P0
+COLOR_TREND: Final[str]  = "#38BDF8"  # Sky blue - systematic growth
+COLOR_HFT: Final[str]    = "#10B981"  # Emerald  - fee capture
 
 # Priority palette
-COLOR_P0: Final[str] = "#EF4444"  # Red    — critical
-COLOR_P1: Final[str] = "#F59E0B"  # Amber  — wash trades
-COLOR_P2: Final[str] = "#6366F1"  # Indigo — volume spikes
+COLOR_P0: Final[str] = "#EF4444"  # Red    - critical
+COLOR_P1: Final[str] = "#F59E0B"  # Amber  - wash trades
+COLOR_P2: Final[str] = "#6366F1"  # Indigo - volume spikes
 
 # Chart resolution & output
 DPI: Final[int] = 200
@@ -79,7 +79,7 @@ def _load_or_generate(
     if os.path.exists(csv_path):
         return pd.read_csv(csv_path)
 
-    logger.warning("%s not found — running engine fallback.", csv_path)
+    logger.warning("%s not found - running engine fallback.", csv_path)
     from analytics_engine import export_data_warehouse_csvs  # lazy import
     tables = export_data_warehouse_csvs()
     return tables[fallback_key]
@@ -99,7 +99,7 @@ def _save_figure(fig: plt.Figure, filename: str) -> None:
 
 def render_page1_pnl_cockpit() -> None:
     """Render cumulative PnL curves, fee contribution, and asset concentration."""
-    logger.info("Generating Page 1: Executive & PnL KPI Cockpit…")
+    logger.info("Generating Page 1: Executive & PnL KPI Cockpit...")
 
     trades_df = _load_or_generate(os.path.join("data", "fct_trades.csv"), "fct_trades")
     users_df  = _load_or_generate(os.path.join("data", "dim_users.csv"),  "dim_users")
@@ -214,7 +214,7 @@ def render_page1_pnl_cockpit() -> None:
 
 def render_page2_stoploss_diagnostic() -> None:
     """Render drawdown/win-rate scatter, PnL bar chart, and capital-saved comparison."""
-    logger.info("Generating Page 2: Stop-Loss Backtest Diagnostic…")
+    logger.info("Generating Page 2: Stop-Loss Backtest Diagnostic...")
 
     summary_df = _load_or_generate(
         os.path.join("data", "diagnostic_stop_loss_summary.csv"),
@@ -346,7 +346,7 @@ def render_page2_stoploss_diagnostic() -> None:
 
 def render_page3_incident_queue() -> None:
     """Render incident summary cards, severity donut, slippage histogram, and wash-trade KDE."""
-    logger.info("Generating Page 3: Incident Prioritisation Queue…")
+    logger.info("Generating Page 3: Incident Prioritisation Queue...")
 
     df_incidents = _load_or_generate(
         os.path.join("data", "fct_incident_queue.csv"),
@@ -473,7 +473,7 @@ def render_page3_incident_queue() -> None:
 def main() -> None:
     logging.basicConfig(
         level=logging.INFO,
-        format="%(asctime)s [%(levelname)s] %(name)s — %(message)s",
+        format="%(asctime)s [%(levelname)s] %(name)s - %(message)s",
         datefmt="%Y-%m-%dT%H:%M:%S",
     )
     print("=" * 70)

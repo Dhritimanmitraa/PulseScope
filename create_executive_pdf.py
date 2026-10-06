@@ -4,11 +4,20 @@ Uses ReportLab to build an institutional-grade, publication-ready executive memo
 """
 
 import os
-from reportlab.lib.pagesizes import letter
+
 from reportlab.lib import colors
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable
+from reportlab.lib.pagesizes import letter
+from reportlab.lib.styles import ParagraphStyle
 from reportlab.pdfgen import canvas
+from reportlab.platypus import (
+    HRFlowable,
+    Paragraph,
+    SimpleDocTemplate,
+    Spacer,
+    Table,
+    TableStyle,
+)
+
 
 class NumberedCanvas(canvas.Canvas):
     """Ensures footer and single-page branding."""
@@ -53,8 +62,6 @@ def build_pdf(filename: str):
         bottomMargin=42
     )
 
-    styles = getSampleStyleSheet()
-    
     # Custom Styles
     brand_style = ParagraphStyle(
         'BrandTitle',
@@ -63,7 +70,7 @@ def build_pdf(filename: str):
         leading=18,
         textColor=colors.HexColor("#1e293b")
     )
-    
+
     brand_sub = ParagraphStyle(
         'BrandSub',
         fontName='Helvetica-Bold',
@@ -71,7 +78,7 @@ def build_pdf(filename: str):
         leading=11,
         textColor=colors.HexColor("#0284c7")
     )
-    
+
     meta_label = ParagraphStyle(
         'MetaLabel',
         fontName='Helvetica-Bold',
@@ -79,7 +86,7 @@ def build_pdf(filename: str):
         leading=12,
         textColor=colors.HexColor("#334155")
     )
-    
+
     meta_val = ParagraphStyle(
         'MetaVal',
         fontName='Helvetica',
@@ -87,7 +94,7 @@ def build_pdf(filename: str):
         leading=12,
         textColor=colors.HexColor("#0f172a")
     )
-    
+
     h2_style = ParagraphStyle(
         'Heading2',
         fontName='Helvetica-Bold',
@@ -97,7 +104,7 @@ def build_pdf(filename: str):
         spaceBefore=5,
         spaceAfter=3
     )
-    
+
     body_style = ParagraphStyle(
         'Body',
         fontName='Helvetica',
@@ -106,7 +113,7 @@ def build_pdf(filename: str):
         textColor=colors.HexColor("#334155"),
         spaceAfter=4
     )
-    
+
     bullet_style = ParagraphStyle(
         'Bullet',
         fontName='Helvetica',
@@ -115,7 +122,7 @@ def build_pdf(filename: str):
         textColor=colors.HexColor("#334155"),
         spaceAfter=3
     )
-    
+
     table_hdr = ParagraphStyle(
         'TableHdr',
         fontName='Helvetica-Bold',
@@ -124,7 +131,7 @@ def build_pdf(filename: str):
         textColor=colors.white,
         alignment=1
     )
-    
+
     table_cell = ParagraphStyle(
         'TableCell',
         fontName='Helvetica',
@@ -132,7 +139,7 @@ def build_pdf(filename: str):
         leading=9.5,
         textColor=colors.HexColor("#1e293b")
     )
-    
+
     table_cell_center = ParagraphStyle(
         'TableCellCenter',
         fontName='Helvetica',
@@ -141,7 +148,7 @@ def build_pdf(filename: str):
         textColor=colors.HexColor("#1e293b"),
         alignment=1
     )
-    
+
     table_cell_bold = ParagraphStyle(
         'TableCellBold',
         fontName='Helvetica-Bold',
@@ -195,14 +202,14 @@ def build_pdf(filename: str):
 
     # Key Findings
     story.append(Paragraph("Key Empirical Findings", h2_style))
-    
+
     f1 = (
         "<b>1. Cost of Unmanaged Drawdown:</b> Retail speculators exhibited an average maximum drawdown of <b>-34.8%</b>, "
         "with <b>62%</b> of unmanaged losing positions remaining open past a -15% unrealised loss threshold. "
         "This persistent loss locks trader capital, induces psychological friction, and drastically dampens trading velocity."
     )
     story.append(Paragraph(f1, bullet_style))
-    
+
     f2 = (
         "<b>2. The 5% Stop-Loss Sweet Spot:</b> Simulating a 5% stop-loss threshold across all retail long entries reduced total "
         "cohort losses by <b>77.7% (saving ₹14.3 Lakhs)</b>. While aggressive 2% stops resulted in excessive whipsaw liquidations, "
@@ -220,7 +227,7 @@ def build_pdf(filename: str):
 
     # Metric Comparison Table
     table_data = [
-        [Paragraph("Metric Comparison", table_hdr), Paragraph("Unmanaged Retail", table_hdr), 
+        [Paragraph("Metric Comparison", table_hdr), Paragraph("Unmanaged Retail", table_hdr),
          Paragraph("With 5% Stop-Loss", table_hdr), Paragraph("Variance (Impact)", table_hdr)],
         [Paragraph("Total Realised Net PnL", table_cell), Paragraph("-₹18.4 Lakhs", table_cell_center),
          Paragraph("-₹4.1 Lakhs", table_cell_center), Paragraph("+₹14.3 Lakhs (+77.7%)", table_cell_bold)],
@@ -231,7 +238,7 @@ def build_pdf(filename: str):
         [Paragraph("Total Exchange Fees Paid", table_cell), Paragraph("₹1.82 Lakhs", table_cell_center),
          Paragraph("₹2.95 Lakhs", table_cell_center), Paragraph("+62.1% Fee Growth", table_cell_bold)]
     ]
-    
+
     comp_table = Table(table_data, colWidths=[180, 115, 115, 120])
     comp_table.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor("#0f172a")),
@@ -257,7 +264,7 @@ def build_pdf(filename: str):
         "user solvency and extends customer lifetime value (LTV) from 2.4 months to 7.8+ months."
     )
     story.append(Paragraph(r1, bullet_style))
-    
+
     r2 = (
         "<b>2. Automated P0 Operational Slippage Routing:</b> Operationalise the P0 Incident Queue to trigger automated liquidity provider "
         "(LP) re-routing and spread checks whenever market stop-loss slippage breaches 2.5% on major pairs."

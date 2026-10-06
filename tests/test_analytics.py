@@ -12,22 +12,18 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta
 
-import numpy as np
 import pandas as pd
 import pytest
 
 from analytics_engine import (
+    DEFAULT_SL_THRESHOLDS,
+    P0_SLIPPAGE_THRESHOLD,
+    P2_ZSCORE_THRESHOLD,
     detect_anomalies_and_prioritise,
     fetch_ohlcv_candles,
     generate_synthetic_orders_and_trades,
-    generate_synthetic_users,
     run_multi_threshold_stop_loss_backtest,
-    P0_SLIPPAGE_THRESHOLD,
-    P1_WASH_TRADE_WINDOW_SEC,
-    P2_ZSCORE_THRESHOLD,
-    DEFAULT_SL_THRESHOLDS,
 )
-
 
 # =============================================================================
 # TEST 1: FIFO LOT CONSERVATION & ACCOUNTING INVARIANTS

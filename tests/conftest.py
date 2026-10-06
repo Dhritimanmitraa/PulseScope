@@ -9,16 +9,12 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta
 
-import numpy as np
 import pandas as pd
 import pytest
 
 from analytics_engine import (
-    generate_synthetic_users,
     generate_synthetic_orders_and_trades,
-    fetch_ohlcv_candles,
 )
-
 
 # ---------------------------------------------------------------------------
 # Minimal candle DataFrames

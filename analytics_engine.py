@@ -37,21 +37,21 @@ import requests
 # ---------------------------------------------------------------------------
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(name)s — %(message)s",
+    format="%(asctime)s [%(levelname)s] %(name)s - %(message)s",
     datefmt="%Y-%m-%dT%H:%M:%S",
 )
 logger = logging.getLogger("PulseScope.Engine")
 
 # ---------------------------------------------------------------------------
-# Module-level constants  (single source of truth — no magic literals)
+# Module-level constants  (single source of truth - no magic literals)
 # ---------------------------------------------------------------------------
 USDT_INR_RATE: Final[float] = 88.50          # Nominal INR/USDT conversion peg
 
 # GBM simulation parameters
 GBM_MU: Final[float] = 0.0001               # Slight positive hourly drift
-GBM_SIGMA: Final[float] = 0.008             # 0.8 % hourly volatility (1-σ)
+GBM_SIGMA: Final[float] = 0.008             # 0.8 % hourly volatility (1-sigma)
 GBM_JUMP_PROB: Final[float] = 0.03          # Probability of structural regime jump
-GBM_JUMP_SIZE: Final[float] = 0.035         # ±3.5 % jump magnitude
+GBM_JUMP_SIZE: Final[float] = 0.035         # +/- 3.5 % jump magnitude
 
 # Fee tiers (fraction, not percentage)
 FEE_RETAIL_TAKER: Final[float] = 0.0020     # 20 bps
@@ -102,20 +102,20 @@ def fetch_ohlcv_candles(
     base_currency:
         Quote currency for display / valuation (currently only ``"INR"``).
     interval:
-        Binance kline interval string (``"1h"``, ``"1m"``, …).
+        Binance kline interval string (``"1h"``, ``"1m"``, ...).
     days:
         Number of trailing days of history to request.
     base_price_inr:
         Seed price (INR) for the GBM fallback generator.
     random_seed:
-        NumPy seed for the stochastic fallback — kept explicit so callers
+        NumPy seed for the stochastic fallback - kept explicit so callers
         can vary seeds without affecting the global RNG state.
 
     Returns
     -------
     pd.DataFrame
         Columns: asset_id, open_time, open_price, high_price, low_price,
-        close_price, volume — sorted ascending by open_time.
+        close_price, volume - sorted ascending by open_time.
     """
     logger.info(
         "Fetching %s/%s candles  interval=%s  days=%d",
@@ -234,7 +234,7 @@ def generate_synthetic_users(
     rng = np.random.default_rng(random_seed)
     users: list[dict] = []
 
-    # Retail Speculators — 15 users
+    # Retail Speculators - 15 users
     for i in range(1, 16):
         users.append({
             "user_id":          f"USR_RET_{i:03d}",
@@ -243,7 +243,7 @@ def generate_synthetic_users(
             "persona":          "RETAIL_SPECULATOR",
         })
 
-    # Systematic Trend Traders — 10 users
+    # Systematic Trend Traders - 10 users
     for i in range(1, 11):
         users.append({
             "user_id":          f"USR_SYS_{i:03d}",
@@ -252,7 +252,7 @@ def generate_synthetic_users(
             "persona":          "SYSTEMATIC_TREND",
         })
 
-    # High-Frequency Market Makers — 5 users
+    # High-Frequency Market Makers - 5 users
     for i in range(1, 6):
         users.append({
             "user_id":          f"USR_HFT_{i:03d}",
@@ -294,9 +294,9 @@ def generate_synthetic_orders_and_trades(
     Returns
     -------
     tuple[pd.DataFrame, pd.DataFrame]
-        (orders_df, trades_df) — both sorted by timestamp, index reset.
+        (orders_df, trades_df) - both sorted by timestamp, index reset.
     """
-    logger.info("Simulating multi-persona order intent and trade executions…")
+    logger.info("Simulating multi-persona order intent and trade executions...")
     rng = np.random.default_rng(random_seed)
 
     orders: list[dict] = []
@@ -305,7 +305,7 @@ def generate_synthetic_orders_and_trades(
     order_seq = 500_000
     trade_seq = 800_000
 
-    # Pre-materialise candle list once — avoids repeated DataFrame access in loops
+    # Pre-materialise candle list once - avoids repeated DataFrame access in loops
     candle_records: list[dict] = candles_df.to_dict(orient="records")
     num_candles: int = len(candle_records)
 
@@ -573,7 +573,7 @@ def run_multi_threshold_stop_loss_backtest(
     summary_df:
         Executive benchmark matrix (Unmanaged vs. each stop-loss policy).
     """
-    logger.info("Executing multi-threshold stop-loss diagnostic simulation…")
+    logger.info("Executing multi-threshold stop-loss diagnostic simulation...")
 
     retail_buys = trades_df[
         (trades_df["side"] == "BUY")
@@ -581,7 +581,7 @@ def run_multi_threshold_stop_loss_backtest(
     ].copy()
 
     if retail_buys.empty:
-        logger.warning("No retail buy trades found — returning empty backtest results.")
+        logger.warning("No retail buy trades found - returning empty backtest results.")
         return pd.DataFrame(), pd.DataFrame()
 
     # Build a sorted parallel structure for O(log n) forward-candle lookup
@@ -693,7 +693,7 @@ def run_multi_threshold_stop_loss_backtest(
         })
 
     summary_df = pd.DataFrame(summary_metrics)
-    logger.info("Stop-loss diagnostic completed — %d lot records processed.", len(sim_df))
+    logger.info("Stop-loss diagnostic completed - %d lot records processed.", len(sim_df))
     return sim_df, summary_df
 
 
@@ -713,7 +713,7 @@ def detect_anomalies_and_prioritise(
         Stop-loss / market-order execution slippage > 3.00 %.
         Baseline SLA: 2.00 %.
     P1 (High):
-        Circular wash-trading — opposing sides with identical quantity
+        Circular wash-trading - opposing sides with identical quantity
         executed by the same user/asset within 5.0 seconds.
     P2 (Medium):
         Rolling 24-hour volume Z-score > 3.00 (statistical spike).
@@ -728,7 +728,7 @@ def detect_anomalies_and_prioritise(
     trades_df:
         DataFrame of trade executions (fct_trades schema).
     orders_df:
-        Optional orders DataFrame — reserved for future order-level checks.
+        Optional orders DataFrame - reserved for future order-level checks.
 
     Returns
     -------
@@ -736,7 +736,7 @@ def detect_anomalies_and_prioritise(
         Incident queue sorted by (priority_level, detected_at).
         Returns an empty DataFrame if no incidents are found.
     """
-    logger.info("Executing risk surveillance and incident triage…")
+    logger.info("Executing risk surveillance and incident triage...")
     incidents: list[dict] = []
 
     # Guard: empty or malformed input
@@ -829,7 +829,7 @@ def detect_anomalies_and_prioritise(
     # -------------------------------------------------------------------------
     # P2: Rolling 24-hour volume Z-score > 3.0
     #
-    # Works on an isolated copy — no mutation of caller's trades_df.
+    # Works on an isolated copy - no mutation of caller's trades_df.
     # -------------------------------------------------------------------------
     vol_ts = (
         trades_df[["executed_at", "executed_qty"]]
@@ -892,17 +892,17 @@ def export_data_warehouse_csvs(
     2. Fetch / generate market candles (BTC, 30 days).
     3. Generate 30-trader user cohort.
     4. Simulate orders and matched trades for all personas.
-    5. Run P0/P1/P2 anomaly triage → incident queue.
+    5. Run P0/P1/P2 anomaly triage -> incident queue.
     6. Run multi-threshold stop-loss backtest.
     7. Write all tables to ``output_dir`` as UTF-8 CSVs.
 
     Returns
     -------
     dict[str, pd.DataFrame]
-        Mapping of table name → DataFrame for all core warehouse tables.
+        Mapping of table name -> DataFrame for all core warehouse tables.
     """
     os.makedirs(output_dir, exist_ok=True)
-    logger.info("Initialising PulseScope Data Warehouse pipeline → %s", output_dir)
+    logger.info("Initialising PulseScope Data Warehouse pipeline -> %s", output_dir)
 
     # 1. Assets dimension
     assets_df = pd.DataFrame([
@@ -938,7 +938,7 @@ def export_data_warehouse_csvs(
     for name, df in tables.items():
         path = os.path.join(output_dir, f"{name}.csv")
         df.to_csv(path, index=False, encoding="utf-8")
-        logger.info("Exported %-25s → %s  (%d rows)", name, path, len(df))
+        logger.info("Exported %-25s -> %s  (%d rows)", name, path, len(df))
 
     # 6. Stop-loss backtest diagnostics
     sim_df, summary_df = run_multi_threshold_stop_loss_backtest(trades_df, candles_df)
