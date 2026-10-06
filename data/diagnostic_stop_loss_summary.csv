@@ -1,5 +1,5 @@
 Strategy,Total_Realised_PnL_INR,Avg_Max_Drawdown_Pct,Win_Rate_Pct,Capital_Preserved_INR,Stop_Trigger_Rate_Pct
-Unmanaged Retail Baseline,-310140.25,-2.31,32.92,0.0,0.0
-Automated 2% Stop-Loss,-502545.24,-1.61,26.34,-192404.99,50.62
-Automated 5% Stop-Loss,-337000.9,-2.24,32.51,-26860.65,5.35
-Automated 10% Stop-Loss,-310140.25,-2.31,32.92,0.0,0.0
+Unmanaged Retail Baseline,-208529.53,-1.95,30.25,0.0,0.0
+Automated 2% Stop-Loss,-281038.31,-1.42,30.25,-72508.78,38.24
+Automated 5% Stop-Loss,-212987.64,-1.92,30.25,-4458.11,2.1
+Automated 10% Stop-Loss,-208529.53,-1.95,30.25,0.0,0.0

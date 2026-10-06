@@ -18,7 +18,7 @@ class NumberedCanvas(canvas.Canvas):
 
     def showPage(self):
         self._saved_page_states.append(dict(self.__dict__))
-        self._startPage()
+        self._startPage()  # type: ignore
 
     def save(self):
         num_pages = len(self._saved_page_states)
@@ -39,7 +39,7 @@ class NumberedCanvas(canvas.Canvas):
         # Footer text
         footer_text = "PulseScope: Crypto Trading Performance, Risk & Anomaly Analytics Platform | CoinDCX BI & Analytics"
         self.drawString(40, 20, footer_text)
-        page_str = f"Page {self._pageNumber} of {page_count}"
+        page_str = f"Page {self._pageNumber} of {page_count}"  # type: ignore
         self.drawRightString(letter[0] - 40, 20, page_str)
         self.restoreState()
 
